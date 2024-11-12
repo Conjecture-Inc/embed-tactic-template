@@ -1,15 +1,23 @@
+// TEMPLATE CONFIGURATION - Replace these values with your own
+const RUNTIME_URL = "http://localhost:3000";
+const API_KEY = "pk_ab458d9ea1c0fe97449faf128877aa74c2cb14467ac2e105a0b3226dc251b007"; // Replace with your API key
+const TACTIC_ID = "1c517383-6dc6-49e8-a129-7b225e86948c"; // Replace with your tactic ID
+
+// TEMPLATE: Customize these stats for your game
 const user_stats = {
     hp: 200,
     max_hp: 200,
-    items: ["legendary staff of power", "merlin's cloak of domination"],
+    items: ["legendary staff of power", "merlin's cloak of domination"], // Customize items list
 };
 
+// TEMPLATE: Customize enemy stats
 const enemy_stats = {
-    type: "Ancient Dragon",
+    type: "Ancient Dragon", // Change enemy type
     hp: 1000,
     max_hp: 1000,
 };
 
+// TEMPLATE: Customize your story opening
 const story_opening = `The ancient cave mouth looms before you, its jagged edges resembling the teeth of some colossal beast. The air grows colder as you approach, carrying the unmistakable scent of brimstone and ancient magic. Your legendary staff pulses with power, and Merlin's cloak billows around you despite the still air.
 
 Deep within the darkness, you hear the rhythmic breathing of something massive, and occasional glints of gold and precious gems catch what little light reaches this far. The ancient dragon, guardian of untold treasures, awaits within.
@@ -34,11 +42,8 @@ storyText.textContent = story_opening;
 updateStats();
 
 async function makeApiCall(action) {
-
-  const API_KEY = "pk_ab458d9ea1c0fe97449faf128877aa74c2cb14467ac2e105a0b3226dc251b007";
-    
     try {
-        const response = await fetch(`http://localhost:3000/run`, {
+        const response = await fetch(`${RUNTIME_URL}/run`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
