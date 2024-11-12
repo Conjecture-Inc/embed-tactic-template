@@ -15,7 +15,3 @@ A simple text-based dragon-fighting game that runs in the browser.
 - Modify the story text in `game.js`
 - Update the styling in `index.html`
 - Adjust game parameters in `game.js`
-
-## License
-
-MIT 
