@@ -18,16 +18,26 @@
             padding: 20px;
             border-radius: 5px;
         }
+        #stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
         #story-text {
             white-space: pre-wrap;
             margin-bottom: 20px;
         }
         #game-output {
-            height: 200px;
-            overflow-y: auto;
             margin: 20px 0;
             padding: 10px;
-            background-color: #2a2a2a;
+            background-color: #222;
+            border: 1px solid #444;
+            border-radius: 4px;
+        }
+        #loading {
+            display: none;
+            margin: 10px 0;
+            color: #ffd700;
         }
         #action-input {
             width: 100%;
@@ -37,22 +47,42 @@
             color: #fff;
             border: 1px solid #444;
         }
-        #stats {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
+        /* Combat text colors */
+        .game-text.user-input {
+            color: #4a9eff;  /* Blue for player actions */
+        }
+        
+        .game-text.turn-header {
+            color: #ffd700;  /* Gold for turn numbers */
+        }
+        
+        .game-text.combat-details {
+            color: #fff;     /* White for general combat text */
+        }
+        
+        .game-text.roll-details {
+            color: #ff9f4a;  /* Orange for dice rolls */
+        }
+        
+        .game-text.error {
+            color: #ff4a4a;  /* Red for errors */
+        }
+        
+        .game-text.game-over {
+            color: #4aff4a;  /* Green for victory message */
         }
     </style>
 </head>
 <body>
     <div id="game-container">
-        <div id="stats">
-            <div id="player-stats">Player HP: 200/200</div>
-            <div id="dragon-stats">Dragon HP: 1000/1000</div>
-        </div>
         <div id="story-text"></div>
         <div id="game-output"></div>
-        <input type="text" id="action-input" placeholder="What would you like to do?" />
+        <div id="loading">Processing your action... ⚡</div>
+        <input type="text" id="action-input" placeholder="What would you like to do?">
+        <div id="stats">
+            <div id="player-stats">Player HP: 200/200</div>
+            <div id="enemy-stats">Enemy HP: 1000/1000</div>
+        </div>
     </div>
     <script src="game.js"></script>
 </body>
