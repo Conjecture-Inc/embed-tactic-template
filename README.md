@@ -1,6 +1,6 @@
 # Dragon Slayer Adventure Template
 
-A simple text-based dragon-fighting game that runs in the browser.
+A simple example of how to use the Tactics API to create a text-based adventure game.
 
 ## How to Use This Template
 
