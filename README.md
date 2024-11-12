@@ -1,82 +1,21 @@
-# Simple GitHub Pages Template
+# Dragon Slayer Adventure Template
 
-A lightweight, ready-to-use template for creating and deploying static websites using GitHub Pages. Perfect for personal websites, project documentation, or quick landing pages.
+A simple text-based dragon-fighting game that runs in the browser.
 
-## 🚀 Quick Start
+## How to Use This Template
 
-### Using as a Template
-1. Click the green "Use this template" button at the top of this repository
-2. Name your new repository
-3. Clone your new repository:
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-   cd YOUR_REPO_NAME
-   ```
+1. Click the "Use this template" button at the top of this repository
+2. Clone your new repository
+3. Update the API key in `game.js`
+4. Enable GitHub Pages in your repository settings
+5. Your game will be available at `https://[your-username].github.io/[repo-name]`
 
-### Manual Setup
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/CRG2k/example-embed.git
-   cd example-embed
-   ```
+## Customization
 
-## 📝 Making Changes
+- Modify the story text in `game.js`
+- Update the styling in `index.html`
+- Adjust game parameters in `game.js`
 
-1. Edit the `index.html` file to update content
-2. Modify `assets/css/styles.css` to customize the appearance
-3. Add images to `assets/images/` directory
-4. Commit and push your changes:
-   ```bash
-   git add .
-   git commit -m "Update website content"
-   git push
-   ```
+## License
 
-## 🌐 Viewing Your Site
-
-- Your site will automatically deploy to GitHub Pages when you push changes
-- Access your site at: `https://YOUR_USERNAME.github.io/YOUR_REPO_NAME`
-- To test locally:
-  ```bash
-  # Using Python 3
-  python -m http.server 8000
-  
-  # Then visit http://localhost:8000 in your browser
-  ```
-
-## 📁 Project Structure 
-```
-.github/
-├── workflows/
-│   └── deploy.yml
-├── assets/
-│   ├── css/
-│   │   └── styles.css
-│   └── images/
-```
-
-
-## ✨ Customization Tips
-
-- Update the title and meta tags in `index.html` for better SEO
-- Add your own favicon
-- Modify the color scheme in `styles.css`
-- Add additional pages by creating new `.html` files
-- Include a custom domain by adding a CNAME file
-
-## 📚 Resources
-
-- [GitHub Pages Documentation](https://docs.github.com/en/pages)
-- [HTML5 Tutorial](https://www.w3schools.com/html/)
-- [CSS Tutorial](https://www.w3schools.com/css/)
-
-## 🤝 Contributing
-
-Feel free to:
-- Submit issues
-- Fork the repository
-- Submit pull requests
-
-## 📄 License
-
-This template is released under the MIT License. See the [LICENSE](LICENSE) file for details.
+MIT 

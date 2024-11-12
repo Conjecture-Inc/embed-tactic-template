@@ -3,18 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Pages Site</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Dragon Slayer Adventure</title>
+    <style>
+        body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+        #game-container {
+            border: 1px solid #444;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        #story-text {
+            white-space: pre-wrap;
+            margin-bottom: 20px;
+        }
+        #game-output {
+            height: 200px;
+            overflow-y: auto;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #2a2a2a;
+        }
+        #action-input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #444;
+        }
+        #stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Site</h1>
-    </header>
-    <main>
-        <p>This is a template for creating GitHub Pages sites quickly!</p>
-    </main>
-    <footer>
-        <p>Created with ❤️ using GitHub Pages</p>
-    </footer>
+    <div id="game-container">
+        <div id="stats">
+            <div id="player-stats">Player HP: 200/200</div>
+            <div id="dragon-stats">Dragon HP: 1000/1000</div>
+        </div>
+        <div id="story-text"></div>
+        <div id="game-output"></div>
+        <input type="text" id="action-input" placeholder="What would you like to do?" />
+    </div>
+    <script src="game.js"></script>
 </body>
 </html> 
