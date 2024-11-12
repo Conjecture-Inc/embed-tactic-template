@@ -24,7 +24,7 @@ storyText.textContent = story_opening;
 updateStats();
 
 async function makeApiCall(action) {
-    const response = await fetch(`https://staging-api.tactics.dev/run`, {
+    const response = await fetch(`https://api-staging.tactics.dev/run`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
