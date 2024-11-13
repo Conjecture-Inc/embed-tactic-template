@@ -43,7 +43,7 @@ updateStats();
 
 async function makeApiCall(action) {
     try {
-        const response = await fetch(`${RUNTIME_URL}/run`, {
+        const response = await fetch(`${RUNTIME_URL}/api/run`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

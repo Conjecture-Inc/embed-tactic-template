@@ -1,3 +1,22 @@
+// Uncomment below to debug the tactic in the 
+
+// story_opening = `In a dimly lit abandoned carnival, the twisted remains of rusty rides loom overhead. The sound of demented calliope music echoes through the fog as a gigantic, grotesque clown known as "Giggles the Eternal" emerges from the shadows, its razor-sharp teeth gleaming in the moonlight.`;
+
+// user_stats = {
+//     hp: 150,
+//     max_hp: 150,
+//     items: ["blessed silver chainsaw", "anti-clown spray", "circus performer's amulet"]
+// };
+
+// enemy_stats = {
+//     type: "Giggles the Eternal Clown",
+//     hp: 800,
+//     max_hp: 800
+// };
+
+// action = `Rev up my blessed silver chainsaw and charge at Giggles, aiming to slice through the demon clown's oversized shoes.`;
+
+
 result_of_player_action = $do `You are a combat referee. Evaluate the following player action and assign a difficulty rating.
 
 Current Scene:
@@ -53,7 +72,7 @@ Choose a tactical action for the enemy. They should:
 - Use their available weapons/abilities
 - Take logical combat actions
 
-Format: Return only the action in first person (e.g. "I swing my sword at the adventurer's legs")`;
+Format: Return only the action in third person (e.g. "The kobold swings his sword at the adventurer's legs")`;
 
 result_of_enemy_action = $do `You are a combat referee evaluating the difficulty of an action in combat.
 

@@ -45,6 +45,7 @@ A simple example of how to use the Tactics API to create a text-based adventure 
 
 You can customize the game by:
 - Modifying story text and game logic in `game.js`
+- Changing the underlying tactic by changing the `tactic_id` in the API call (suffix of a tactic URL)
 - Updating the UI styling in `index.html`
 - Adjusting game parameters (health, damage, etc.) in `game.js`
 
