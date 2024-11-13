@@ -1,5 +1,6 @@
 // TEMPLATE CONFIGURATION - Replace these values with your own
-const RUNTIME_URL = "http://localhost:3000";
+// const RUNTIME_URL = "http://localhost:3000";
+const RUNTIME_URL = "https://staging.tactics.dev";
 const API_KEY = "pk_ab458d9ea1c0fe97449faf128877aa74c2cb14467ac2e105a0b3226dc251b007"; // Replace with your API key
 const TACTIC_ID = "1c517383-6dc6-49e8-a129-7b225e86948c"; // Replace with your tactic ID
 
