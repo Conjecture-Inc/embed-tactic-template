@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon Slayer Adventure</title>
+    <style>
+        body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+        #game-container {
+            border: 1px solid #444;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        #stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        #story-text {
+            white-space: pre-wrap;
+            margin-bottom: 20px;
+        }
+        #game-output {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #222;
+            border: 1px solid #444;
+            border-radius: 4px;
+        }
+        #loading {
+            display: none;
+            margin: 10px 0;
+            color: #ffd700;
+        }
+        #action-input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #444;
+        }
+        /* Combat text colors */
+        .game-text.user-input {
+            color: #4a9eff;  /* Blue for player actions */
+        }
+        
+        .game-text.turn-header {
+            color: #ffd700;  /* Gold for turn numbers */
+        }
+        
+        .game-text.combat-details {
+            color: #fff;     /* White for general combat text */
+        }
+        
+        .game-text.roll-details {
+            color: #ff9f4a;  /* Orange for dice rolls */
+        }
+        
+        .game-text.error {
+            color: #ff4a4a;  /* Red for errors */
+        }
+        
+        .game-text.game-over {
+            color: #4aff4a;  /* Green for victory message */
+        }
+        /* Add new styles for tactic info */
+        #tactic-info {
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #222;
+            border: 1px solid #444;
+            border-radius: 4px;
+        }
+        #tactic-link {
+            color: #4a9eff;
+            text-decoration: none;
+        }
+        #tactic-link:hover {
+            text-decoration: underline;
+        }
+        .tactic-button {
+            background-color: #1c4472;  /* Brighter blue */
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            margin-left: 10px;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: background-color 0.2s;
+        }
+        
+        .tactic-button:hover {
+            background-color: #112a42;  /* Darker blue on hover */
+        }
+        
+        .editable {
+            color: #4a9eff;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        
+        .editable:hover {
+            background-color: #2a2a2a;
+            cursor: pointer;
+        }
+        /* Add these new styles */
+        #config-form {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #444;
+            border-radius: 4px;
+        }
+        
+        .form-group small {
+            display: block;
+            color: #888;
+            margin-top: 5px;
+        }
+        
+        .form-group small a {
+            color: #4a9eff;
+        }
+        
+        button[type="submit"] {
+            background-color: #4a9eff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #3a7fcf;
+        }
+        .success {
+            color: #4aff4a;
+        }
+        
+        .failure {
+            color: #ff4a4a;
+        }
+    </style>
+</head>
+<body>
+    <div id="config-form" style="display: block;">
+        <h2>Game Configuration</h2>
+        <form id="game-setup">
+            <div class="form-group">
+                <label for="api-key">API Key:</label>
+                <input type="password" id="api-key" required>
+                <small>Get your API key from <a href="https://tactics.dev/keys" target="_blank">tactics.dev</a></small>
+            </div>
+            
+            <div class="form-group">
+                <label for="tactic-url">Tactic URL:</label>
+                <input type="text" id="tactic-url" value="https://tactics.dev/preview/93f99578-6807-4936-92b2-72326bbb8458">
+                <small>Create or use an existing tactic from <a href="https://tactics.dev" target="_blank">tactics.dev</a></small>
+            </div>
+            
+            <h3>Player Configuration</h3>
+            <div class="form-group">
+                <label for="player-hp">Player HP:</label>
+                <input type="number" id="player-hp" value="200" required>
+            </div>
+            <div class="form-group">
+                <label for="player-items">Player Items (comma-separated):</label>
+                <input type="text" id="player-items" value="legendary staff of power, merlin's cloak of domination">
+            </div>
+            
+            <h3>Enemy Configuration</h3>
+            <div class="form-group">
+                <label for="enemy-type">Enemy Type:</label>
+                <input type="text" id="enemy-type" value="Ancient Dragon" required>
+            </div>
+            <div class="form-group">
+                <label for="enemy-hp">Enemy HP:</label>
+                <input type="number" id="enemy-hp" value="1000" required>
+            </div>
+            
+            <h3>Story Configuration</h3>
+            <div class="form-group">
+                <label for="story-opening">Opening Story:</label>
+                <textarea id="story-opening" rows="10" required>The ancient cave mouth looms before you, its jagged edges resembling the teeth of some colossal beast. The air grows colder as you approach, carrying the unmistakable scent of brimstone and ancient magic. Your legendary staff pulses with power, and Merlin's cloak billows around you despite the still air.
+
+Deep within the darkness, you hear the rhythmic breathing of something massive, and occasional glints of gold and precious gems catch what little light reaches this far. The ancient dragon, guardian of untold treasures, awaits within.
+
+Face the ancient dragon if you dare!</textarea>
+            </div>
+            
+            <button type="submit">Start Game</button>
+        </form>
+    </div>
+
+    <div id="game-container" style="display: none;">
+        <div id="story-text"></div>
+        <div id="game-output">Battle Log</div>
+        <div id="loading">Processing your action... ⚡</div>
+        <input type="text" id="action-input" placeholder="What would you like to do?">
+        <div id="stats">
+            <div id="player-stats">Player HP: 200/200</div>
+            <div id="enemy-stats">Enemy HP: 1000/1000</div>
+          </div>
+          <div id="tactic-info">
+              Current Tactic: 
+              <span id="tactic-display" class="editable"></span>
+              <button id="visit-tactic" class="tactic-button">View Tactic</button>
+          </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html> 
