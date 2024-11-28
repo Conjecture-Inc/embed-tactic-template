@@ -29,7 +29,7 @@ jobs:
         with:
           script: |
             try {
-              await github.rest.repos.createPagesDeployment({
+              await github.rest.repos.enablePages({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 source: {
@@ -39,12 +39,13 @@ jobs:
               });
               console.log('Successfully enabled GitHub Pages');
             } catch (error) {
-              // If Pages is already enabled, this is fine
               console.log('Pages status:', error.message);
             }
       
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
